@@ -10,7 +10,17 @@ import ru.yandex.practicum.smarthome.repository.HeatingSystemRepository;
 @RequiredArgsConstructor
 public class HeatingSystemServiceImpl implements HeatingSystemService {
     private final HeatingSystemRepository heatingSystemRepository;
-    
+
+    @Override
+    public HeatingSystemDto createHeatingSystem(HeatingSystemDto heatingSystemDto) {
+        HeatingSystem heatingSystem = new HeatingSystem();
+        heatingSystem.setOn(heatingSystemDto.isOn());
+        heatingSystem.setTargetTemperature(heatingSystemDto.getTargetTemperature());
+        heatingSystem.setCurrentTemperature(heatingSystemDto.getCurrentTemperature());
+        HeatingSystem savedHeatingSystem = heatingSystemRepository.save(heatingSystem);
+        return convertToDto(savedHeatingSystem);
+    }
+
     @Override
     public HeatingSystemDto getHeatingSystem(Long id) {
         HeatingSystem heatingSystem = heatingSystemRepository.findById(id)
