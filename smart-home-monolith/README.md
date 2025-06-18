@@ -26,7 +26,7 @@
 - `spring-boot-starter-web` - для создания веб-приложений.
 - `spring-boot-starter-data-jpa` - для работы с JPA и базой данных.
 - `postgresql` - драйвер для работы с PostgreSQL.
-- `springfox-boot-starter` - для интеграции Swagger.
+- `springdoc-openapi-starter-webmvc-ui` - для интеграции Swagger.
 - `lombok` - для упрощения написания кода.
 - `spring-boot-starter-test`, `spring-boot-testcontainers`, `junit-jupiter`, `testcontainers` - для тестирования.
 
@@ -42,6 +42,14 @@ docker run --name postgres-db -e POSTGRES_DB=smart_home -e POSTGRES_USER=your_us
 
 ``` shell
 mvn spring-boot:run
+```
+
+## Swagger UI
+
+После запуска приложение доступна документация Swagger по адресу:
+
+```
+http://localhost:8080/swagger-ui/index.html
 ```
 
 ## Тесты
