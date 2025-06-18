@@ -20,3 +20,156 @@ paths:
             name: hello-world-svc
             namespace: default
             port: 8080
+
+  /api/heating:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Heating system created
+          content:
+            application/json:
+              schema:
+                type: object
+      x-kusk:
+        upstream:
+          service:
+            name: smart-home-monolith
+            namespace: default
+            port: 8080
+
+  /api/heating/{id}:
+    get:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Heating system info
+          content:
+            application/json:
+              schema:
+                type: object
+      x-kusk:
+        upstream:
+          service:
+            name: smart-home-monolith
+            namespace: default
+            port: 8080
+    put:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Heating system updated
+          content:
+            application/json:
+              schema:
+                type: object
+      x-kusk:
+        upstream:
+          service:
+            name: smart-home-monolith
+            namespace: default
+            port: 8080
+
+  /api/heating/{id}/turn-on:
+    post:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Heating system turned on
+      x-kusk:
+        upstream:
+          service:
+            name: smart-home-monolith
+            namespace: default
+            port: 8080
+
+  /api/heating/{id}/turn-off:
+    post:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Heating system turned off
+      x-kusk:
+        upstream:
+          service:
+            name: smart-home-monolith
+            namespace: default
+            port: 8080
+
+  /api/heating/{id}/set-temperature:
+    post:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: temperature
+          in: query
+          required: true
+          schema:
+            type: number
+            format: double
+      responses:
+        '204':
+          description: Target temperature set
+      x-kusk:
+        upstream:
+          service:
+            name: smart-home-monolith
+            namespace: default
+            port: 8080
+
+  /api/heating/{id}/current-temperature:
+    get:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Current temperature
+          content:
+            application/json:
+              schema:
+                type: number
+                format: double
+      x-kusk:
+        upstream:
+          service:
+            name: smart-home-monolith
+            namespace: default
+            port: 8080
