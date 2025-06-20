@@ -31,7 +31,7 @@ kusk cluster install
 Он выглядит таким образом
 ```ghcr.io/<github_username>/architecture-sprint-3:latest```
 
-Замените адрес образа в файле `helm/smart-home-monolith/values.yaml` на полученный файл:
+Замените адрес образа в файле `charts/smart-home-monolith/values.yaml` на полученный файл:
 
 ```yaml
 image:
