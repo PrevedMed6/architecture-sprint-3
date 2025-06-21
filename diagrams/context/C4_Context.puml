@@ -1,5 +1,5 @@
 @startuml
-!include ../../plantuml-stdlib/C4-PlantUML/C4_Context.puml
+!include ../plantuml-stdlib/C4-PlantUML/C4_Context.puml
 
 Person(user, "Home User", "Управляет отоплением через веб-интерфейс")
 System(smartHome, "Smart Home Monolith", "Spring Boot приложение для управления умным домом")
