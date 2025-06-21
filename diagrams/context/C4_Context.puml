@@ -1,6 +1,6 @@
 @startuml
-!include ../plantuml-stdlib/C4-PlantUML/C4_Context.puml
 
+!include https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Component.puml
 Person(user, "Home User", "Управляет отоплением через веб-интерфейс")
 System(smartHome, "Smart Home Monolith", "Spring Boot приложение для управления умным домом")
 System_Ext(apiGw, "Kusk API Gateway", "Маршрутизирует внешние запросы")
