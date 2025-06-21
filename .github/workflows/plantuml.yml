@@ -44,5 +44,5 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add diagrams/**/*.png || true
           git diff --cached --quiet || git commit -m "Automated diagram generation"
-          git push origin main
+          git push origin HEAD
         if: success()
