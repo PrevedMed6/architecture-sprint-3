@@ -173,3 +173,45 @@ paths:
             name: smart-home-monolith
             namespace: default
             port: 8080
+
+  /v3/api-docs:
+    get:
+      responses:
+        '200':
+          description: OpenAPI documentation
+      x-kusk:
+        upstream:
+          service:
+            name: smart-home-monolith
+            namespace: default
+            port: 8080
+
+  /swagger-ui/{file}:
+    get:
+      parameters:
+        - name: file
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Swagger UI static file
+      x-kusk:
+        upstream:
+          service:
+            name: smart-home-monolith
+            namespace: default
+            port: 8080
+
+  /swagger-ui/:
+    get:
+      responses:
+        '200':
+          description: Swagger UI index
+      x-kusk:
+        upstream:
+          service:
+            name: smart-home-monolith
+            namespace: default
+            port: 8080
