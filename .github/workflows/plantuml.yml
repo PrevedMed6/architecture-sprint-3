@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '17''
+          java-version: '17'
 
       - name: Install PlantUML
         run: sudo apt-get install plantuml
