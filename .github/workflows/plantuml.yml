@@ -20,22 +20,22 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Initialize submodules
+        run: git submodule update --init --recursive
+
       - name: Set up Java
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Install Graphviz
-        run: sudo apt-get update && sudo apt-get install -y graphviz
-
-      - name: Download PlantUML jar
-        run: curl -L -o plantuml.jar https://github.com/plantuml/plantuml/releases/download/v1.2024.4/plantuml-1.2024.4.jar
+      - name: Install PlantUML and Graphviz
+        run: sudo apt-get update && sudo apt-get install -y graphviz plantuml
 
       - name: Generate Diagrams
         run: |
           mkdir -p out
-          java -jar plantuml.jar -o out diagrams/smart-home-monolith/context/*.puml
+          plantuml -o out diagrams/smart-home-monolith/context/*.puml
 
       - name: Commit Diagrams
         run: |
