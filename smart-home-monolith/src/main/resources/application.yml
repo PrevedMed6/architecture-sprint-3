@@ -25,5 +25,3 @@ server:
 springdoc:
   swagger-ui:
     url: /v3/api-docs
-    disable-swagger-default-url: true
-    config-url: /v3/api-docs
