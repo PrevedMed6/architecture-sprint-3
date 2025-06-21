@@ -4,10 +4,11 @@ on:
   push:
     branches:
       - main
+      - warmhouse
   pull_request:
     branches:
       - main
-
+      - warmhouse
 jobs:
   generate-diagrams:
     runs-on: ubuntu-latest
