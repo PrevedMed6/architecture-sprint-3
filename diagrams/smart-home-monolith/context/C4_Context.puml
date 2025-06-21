@@ -1,0 +1,17 @@
+@startuml
+!include https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Component.puml
+
+Person(user, "Home User", "Управляет отоплением через веб-интерфейс")
+System(smartHome, "Smart Home Monolith", "Spring Boot приложение для управления умным домом")
+System_Ext(apiGw, "Kusk API Gateway", "Маршрутизирует внешние запросы")
+System_Ext(db, "PostgreSQL", "Хранит данные о температуре и настройках")
+System_Ext(sensor, "Temperature Sensors", "Отправляют текущую температуру")
+System_Ext(heating, "Heating System", "Физическое оборудование отопления")
+
+Rel(user, apiGw, "Использует", "HTTPS")
+Rel(apiGw, smartHome, "Перенаправляет запросы", "HTTP")
+Rel(smartHome, db, "Чтение и запись", "JDBC")
+Rel(smartHome, sensor, "Получает показания", "HTTP")
+Rel(smartHome, heating, "Отправляет команды")
+
+@enduml
