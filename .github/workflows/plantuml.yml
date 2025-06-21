@@ -24,6 +24,9 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Install Graphviz
+        run: sudo apt-get update && sudo apt-get install -y graphviz
+
       - name: Download PlantUML jar
         run: curl -L -o plantuml.jar https://github.com/plantuml/plantuml/releases/download/v1.2024.4/plantuml-1.2024.4.jar
 
@@ -36,7 +39,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add diagrams/**/*.png out/**/*.png
+          git add diagrams/**/*.png out/**/*.png || true
           git diff --cached --quiet || git commit -m "Automated diagram generation"
           git push origin HEAD
         if: success()
